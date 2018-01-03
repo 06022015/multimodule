@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
  */
 public class SSPServlet extends HttpServlet{
 
-    public void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, java.io.IOException {
-
+    public void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, java.io.IOException {
+          resp.getWriter().write("Ashif Qureshi");
     }
 
 

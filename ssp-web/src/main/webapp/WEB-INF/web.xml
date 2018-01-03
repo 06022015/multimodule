@@ -13,7 +13,7 @@
 	</context-param>
 	<servlet>
 		<servlet-name>ssp</servlet-name>
-		<servlet-class>com.glarimy.bank.servlet.SSPServlet</servlet-class>
+		<servlet-class>com.ssp.web.servlet.SSPServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ssp</servlet-name>

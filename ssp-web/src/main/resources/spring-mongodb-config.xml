@@ -8,14 +8,76 @@
                 http://www.springframework.org/schema/data/mongo
                 http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
+    <mongo:repositories base-package="com.ssp.api.entity.mongo" />
+
     <!-- Default bean name is 'mongo' -->
-    <mongo:mongo host="localhost" port="27017">
-        <!-- OPTIONAL: configure <mongo:options /> -->
-    </mongo:mongo>
+    <mongo:mongo host="localhost" port="27017"/>
+    <!--<mongo:mongo host="127.0.0.1" port="27017">-->
+        <!-- OPTIONAL: configure <mongo:options />
+    </mongo:mongo> -->
 
     <mongo:db-factory dbname="ssp" mongo-ref="mongo"/>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongoDbFactory"/>
     </bean>
+
+
+<!--
+    <bean id="mongoSeedListID" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="mongoSeedlID" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="mongoSeedlID" class="com.mongodb.ServerAddress">
+        <constructor-arg type="java.lang.String" name="host" value="DATABASE_HOST" />
+        <constructor-arg type="int" name="port" value="DATABASE_PORT" />
+    </bean>
+
+    <bean id="mongoCredentialListID" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="mongoCredentialID" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="mongoCredentialID" class="com.mongodb.MongoCredential">
+        <constructor-arg name="mechanism" value = "#{T(com.mongodb.AuthenticationMechanism).SCRAM_SHA_1}" />
+        <constructor-arg type="java.lang.String" name="userName" value="DATABASE_USERNAME" />
+        <constructor-arg type="java.lang.String" name="source" value="DATABASE_SOURCE" />
+        <constructor-arg type="char[]" name="password" value="DB_USER_PASS" />
+    </bean>
+
+    <bean id="mongoClientID" class="com.mongodb.MongoClient">
+        <constructor-arg ref="mongoSeedListID" />
+        <constructor-arg ref="mongoCredentialID"  />
+    </bean>
+
+    <bean id="simpleMongoDbFactoryID" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+        <constructor-arg ref="mongoClientID" />
+        <constructor-arg name="databaseName" value="APP_DATABASENAME" />
+    </bean>
+
+    <bean id="mongoTemplateID" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="simpleMongoDbFactoryID" />
+    </bean>
+
+    <bean id="log4jInitializationID" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+        <property name="targetMethod" value="initLogging" />
+        <property name="arguments">
+            <list>
+                <value>classpath:log4j/log4j_test.properties</value>
+            </list>
+        </property>
+    </bean>-->
+    
+    
+    
+    
+    
 </beans>
